@@ -1,0 +1,251 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Bank Statement Categorization",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:{port}/{basePath}",
+      "description": "Development server (local)",
+      "variables": {
+        "port": {
+          "default": "3000"
+        },
+        "basePath": {
+          "default": "v1/"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/status": {
+      "get": {
+        "tags": [
+          "Diagnostics & Monitoring"
+        ],
+        "operationId": "serviceStatus",
+        "responses": {
+          "200": {
+            "description": "Status of the server",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/statusResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/upload/{type}": {
+      "post": {
+        "tags": [
+          "Input"
+        ],
+        "operationId": "uploadCSV",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "The csv type like ING or Rabobank",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "ING"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "text/csv": {
+              "schema": {
+                "type": "string",
+                "example": "\"Datum\",\"Naam / Omschrijving\",\"Rekening\",\"Tegenrekening\",\"Code\",\"Af Bij\",\"Bedrag (EUR)\",\"MutatieSoort\",\"Mededelingen\"\n\"20180330\",\"ING BANK\",\"NLxxINGB000xxxxxxx\",\"\",\"GM\",\"Af\",\"100,00\",\"Geldautomaat\",\"28-03-2018 12:50\""
+              }
+            }
+          },
+          "required": true
+        },
+        "summary": "Uploads a csv",
+        "responses": {
+          "201": {
+            "description": "CSV processed ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/genericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/terms/add": {
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "operationId": "termsAdd",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "The Category to add the term",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Boodschappen"
+            }
+          },{
+            "name": "term",
+            "in": "query",
+            "description": "The term to add the category",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Jumbo"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/genericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/terms/delete": {
+      "post": {
+        "tags": [
+          "Categories"
+        ],
+        "operationId": "termsDelete",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "The Category of the term",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Boodschappen"
+            }
+          },{
+            "name": "term",
+            "in": "query",
+            "description": "The term to delete",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Jumbo"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Deleted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/genericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/categorize": {
+      "get": {
+        "tags": [
+          "Categories"
+        ],
+        "operationId": "categorizeCat",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "The Category to re-categorize",
+            "schema": {
+              "type": "string",
+              "example": "boodschappen"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of the server",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/genericResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "genericResponse": {
+        "description": "The generic API response, send in case of errors or simple confirmations",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "msg"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "example": "000"
+                },
+                "msg": {
+                  "type": "string",
+                  "example": "why this code is returned"
+                }
+              }
+            }
+          }
+        }
+      },
+      "statusResponse": {
+        "description": "The generic API response, send in case of errors or simple confirmations",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "timestamp"
+              ],
+              "properties": {
+                "status": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "timestamp": {
+                  "type": "string",
+                  "example": "1970-01-01T01:01:01.000Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

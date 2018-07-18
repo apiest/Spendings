@@ -1,0 +1,20 @@
+{
+  "name": "bankstatements",
+  "version": "1.0.0",
+  "description": "Import Bank Statements from a CSV into elastic to get some insight in your spendings",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Berry Piest",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "csvtojson": "^2.0.4",
+    "elasticsearch": "^15.1.0",
+    "md5": "^2.2.1",
+    "restify": "^7.2.1",
+    "restify-errors": "^6.1.1",
+    "swagger-routes": "^1.7.0"
+  }
+}

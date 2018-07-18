@@ -1,0 +1,21 @@
+const errors = require('restify-errors');
+
+/**
+ * {{description}}
+ * {{method}} {{& fullPath}}
+ * {{#parameters}}
+ *  name:{{name}},
+ *   in:{{in}},
+ *   description:{{description}},
+ *   required:{{required}},
+ *   type:{{type}}{{/parameters}}
+ *
+ *  @param {Object} req
+ *  @param {Object} res
+ *  @param {Object} next
+ */
+exports.handler = function {{id}}(req, res, next) {
+    res.send('{{method}}: {{& fullPath}}');
+    return next();
+
+};

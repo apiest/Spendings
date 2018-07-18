@@ -1,0 +1,108 @@
+{
+  "mutation": ["Geldautomaat"],
+  "comments": ["Sparen"],
+  "name": [
+    "Hypotheek",
+    "Brandstof",
+    "Verzekering",
+    "Boodschappen",
+    "Mobiel",
+    "Uiteten",
+    "Parkeren",
+    "Gas Water Licht",
+    "Liefdadigheid",
+    "Kleding",
+    "Belastingen",
+    "Huis",
+    "Shoppen",
+    "Auto",
+    "Verzorging",
+    "Uitje",
+    "Gezondheid",
+    "Kind",
+    "Sparen",
+    "Speelgoed",
+    "Overig",
+    "Bank",
+    {
+      "value":"ING Bank",
+      "search": {
+        "comments": [
+          "Boodschappen","Shoppen"
+        ]
+      }
+    },
+    {
+      "value":"ING Bank NV Betaalverzoek",
+      "search": {
+        "comments": [
+          "Uiteten","Uitje"
+        ]
+      }
+    },
+    {
+      "value":"Gemeente Veenendaal",
+      "search": {
+        "comments": [
+          "Belastingen"
+        ]
+      }
+    },
+    {
+      "value":"Stichting Derdengelden Buckaroo",
+      "search": {
+        "comments": [
+          "Kleding"
+        ]
+      }
+    },
+    {
+      "value":"Stichting Sisow",
+      "search": {
+        "comments": [
+          "Shoppen"
+        ]
+      }
+    },
+    {
+      "value":"Stichting Pay.nl",
+      "search": {
+        "comments": [
+          "Speelgoed"
+        ]
+      }
+    },
+    {
+      "value":"Adyen",
+      "search": {
+        "comments": [
+          "Kleding","Shoppen","Huis"
+        ]
+      }
+    },
+    {
+      "value":"ADYEN BV",
+      "search": {
+        "comments": [
+          "Kleding","Shoppen","Huis"
+        ]
+      }
+    },
+    {
+      "value":"MultiSafepay",
+      "search": {
+        "comments": [
+          "Huis","Kleding"
+        ]
+      }
+    },
+    {
+      "endswith":"Betaalautomaat",
+      "search": {
+        "comments": [
+          "Huis","Kleding","Boodschappen","Shoppen","Speelgoed","Brandstof","Internet","Uiteten"
+        ]
+      }
+    }
+  ]
+}
